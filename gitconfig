@@ -1,0 +1,33 @@
+[user]
+    name = Aleksey Ivanov
+    email = stupidlogin@gmail.com
+
+[alias]
+    st = status
+    ci = commit
+    co = checkout
+    br = branch
+    up = pull -u
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    publish = !sh -c 'git push origin \"$0\" && git config \"branch.$0.remote\" origin && git config \"branch.$0.merge\" \"refs/heads/$0\"'
+
+[branch]
+    autosetupmerge = true
+
+[color]
+    ui = auto
+
+[color "diff"]
+    whitespace = red reverse
+
+[core]
+    autocrlf = input
+    whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+    quotepath = false
+    editor = vim
+
+[diff]
+    color = true
+
+[github]
+    user = iadramelk
