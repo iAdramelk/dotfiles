@@ -85,9 +85,6 @@
 
     " File editing and file navigation
 
-    " + Easy way to edit selection without rest of the file
-        Bundle 'chrisbra/NrrwRgn'
-
     " + Pairs of handy bracket mappings
         Bundle 'tpope/vim-unimpaired'
 
@@ -97,6 +94,15 @@
     " + Showing marks using number array in color, easy to trace
         Bundle 'number-marks'
 
+    " + Tiled Window Management for Vim
+        Bundle 'spolu/dwm.vim.git'
+
+    " + Easily search for, substitute, and abbreviate multiple variants of a word
+        Bundle 'tpope/vim-abolish'
+
+    " + Vim motions on speed!
+        Bundle 'Lokaltog/vim-easymotion.git'
+
     " Autocomplete, snippets and batch editing
 
     " + Quoting/parenthesizing made simple
@@ -104,9 +110,6 @@
 
     " + Functions and mappings to close open HTML/XML tags
         Bundle 'docunext/closetag.vim'
-
-    " + Automatically adds matching braces
-        Bundle 'kana/vim-smartinput'
 
     " + Perform all your vim insert mode completions with Tab
         Bundle 'ervandew/supertab'
@@ -126,7 +129,7 @@
     " Interface
 
     " + Maintains a history of previous yanks, changes and deletes
-        "Bundle 'YankRing.vim'
+        Bundle 'YankRing.vim'
 
     " + Zoom in/out  of windows (toggle between one window and multi-window)
         Bundle 'ZoomWin'
@@ -151,6 +154,8 @@
     " + Syntax checking hacks for vim
         Bundle 'scrooloose/syntastic'
 
+    " + Make Vim play nicely with iTerm 2 and tmux
+        Bundle 'sjl/vitality.vim'
 
 
 " Базовые настройки
@@ -187,7 +192,7 @@
 
     set splitbelow                  " Новый сплит будет ниже текущего :sp
     set splitright                  " Новый сплит будет правее текущего :vsp
-    set shortmess+=I                " Не показывать intro screen
+    set shortmess+=IT                " Не показывать intro screen
 
     set hidden                      " Разрешает скрытые буфферы
     set relativenumber              " Относительные номера строк
@@ -229,13 +234,6 @@
 " Переназначаем клавиши
 
     let mapleader = ","
-
-    " Переключение между буфферами
-
-    map <C-l> <C-w>l
-    map <C-h> <C-w>h
-    map <C-j> <C-w>j
-    map <C-k> <C-w>k
 
     " Стрелки в navigation mode
 
