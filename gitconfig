@@ -21,13 +21,12 @@
     ui = auto
     diff = auto
     status = auto
-    branch =status auto
+    branch = auto
 
 [color "branch"]
 
-    current = yellow reverse
-    remote = green bold
-    local = blue bold
+    current = green
+    remote = blue
 
 [color "diff"]
 
@@ -52,8 +51,16 @@
 
     user = iadramelk
 
-[url "git@gitgithub.com:"]
+[url "git@github.com:"]
 
-    pushInsteadOf = "https://github.com/"
-    pushInsteadOf = "http://github.com/"
-    pushInsteadOf = "gh:"
+    insteadOf = "https://github.com/"
+    insteadOf = "http://github.com/"
+    insteadOf = "gh:"
+
+[url "git@github.com:jetstyle/"]
+
+    insteadOf = "js:"
+
+[url "git@github.com:iAdramelk/"]
+
+    insteadOf = "ia:"

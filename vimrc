@@ -94,14 +94,14 @@
     " + Showing marks using number array in color, easy to trace
         Bundle 'number-marks'
 
-    " + Tiled Window Management for Vim
-        Bundle 'spolu/dwm.vim.git'
-
     " + Easily search for, substitute, and abbreviate multiple variants of a word
         Bundle 'tpope/vim-abolish'
 
     " + Vim motions on speed!
         Bundle 'Lokaltog/vim-easymotion.git'
+
+    " + Plugin for better line numbers
+        Bundle 'myusuf3/numbers.vim'
 
     " Autocomplete, snippets and batch editing
 
@@ -157,6 +157,11 @@
     " + Make Vim play nicely with iTerm 2 and tmux
         Bundle 'sjl/vitality.vim'
 
+    " + Terminal emulator which uses a Vim buffer to display the program output
+        Bundle 'rosenfeld/conque-term'
+
+    " + Vim plugin that displays tags in a window, ordered by class etc
+        Bundle 'majutsushi/tagbar'
 
 " Базовые настройки
 
@@ -212,12 +217,18 @@
 
     set noshowmatch                 " Не показывать парные <> в HTML
 
+    set noswapfile
+
+    set nobackup                    " Выключаем бэкап
+
     let loaded_matchparen=1         " Перестает прыгать на парную скобку, показывая где она. +100 к скорости
 
     filetype plugin indent on
 
-    set backupdir=~/.vim/bac//,/tmp " Директория для backup файлов
-    set directory=~/.vim/swp//,/tmp " Директория для swp файлов
+
+    set undodir=~/.vim/tmp
+    set undofile
+    set undolevels=1001
 
     " Назначаем символы для табов и переносов в зависимости от наличия юникода
 
@@ -353,7 +364,9 @@
 
     " PLUGIN NERDTree
 
-        nmap <leader>nt :NERDTreeToggle<CR>
+        nnoremap <silent> <leader>nt :NERDTreeToggle<CR>
+
+
 
         let g:NERDTreeWinPos = "right"
         let g:NERDTreeQuitOnOpen = 1
@@ -369,9 +382,9 @@
 
     " PLUGIN YankRing
 
-        "nmap <leader>y :YRShow<CR>
+        nmap <leader>y :YRShow<CR>
 
-        "let g:yankring_min_element_length = 2
+        let g:yankring_min_element_length = 2
 
   " PLUGIN Fugitive
 
