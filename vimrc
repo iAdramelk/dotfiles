@@ -12,7 +12,6 @@
     Bundle 'gmarik/vundle'
 
 
-
 " My Bundles here:
 
     " Themes
@@ -112,19 +111,13 @@
         Bundle 'docunext/closetag.vim'
 
     " + Perform all your vim insert mode completions with Tab
-        Bundle 'ervandew/supertab'
+        Bundle 'AutoComplPop'
 
     " + Vim script for text filtering and alignment
         Bundle 'godlygeek/tabular'
 
     " + Commenting plugin
         Bundle 'scrooloose/nerdcommenter'
-
-    " + Snipmate snippets and dependencies
-        Bundle 'garbas/vim-snipmate'
-        Bundle 'MarcWeber/vim-addon-mw-utils'
-        Bundle 'tomtom/tlib_vim'
-        Bundle 'snipmate-snippets'
 
     " Interface
 
@@ -163,6 +156,15 @@
     " + Vim plugin that displays tags in a window, ordered by class etc
         Bundle 'majutsushi/tagbar'
 
+    " + Bundled vim version of Sparkup
+        Bundle 'kogakure/vim-sparkup.git'
+
+    " + Pseudo clipboard register for non-GUI version of Vim
+        Bundle 'fakeclip'
+
+    " + Tiled Window Management for Vim
+        "Bundle 'spolu/dwm.vim'
+
 " Базовые настройки
 
     set encoding=utf-8              " Кодировка внутри Vim'а
@@ -183,7 +185,6 @@
     set linebreak                   " Перенос не разрывая слов
     set autoindent                  " Копирует отступ от предыдущей строки
 
-    set showmatch                   " Показывает закрывающую скобку
     set expandtab                   " Заменяет табы пробелами
     set shiftwidth=4                " Размер сдвига по клавишам << и >>
     set tabstop=4                   " Размер табуляции
@@ -215,7 +216,7 @@
 
     set spell spelllang=ru,en       " Проверка орфографии
 
-    set noshowmatch                 " Не показывать парные <> в HTML
+    "set noshowmatch                 " Не показывать парные <> в HTML
 
     set noswapfile
 
@@ -245,6 +246,14 @@
 " Переназначаем клавиши
 
     let mapleader = ","
+
+
+    " Переключение между буфферами
+
+    map <C-l> <C-w>l
+    map <C-h> <C-w>h
+    map <C-j> <C-w>j
+    map <C-k> <C-w>k
 
     " Стрелки в navigation mode
 
@@ -315,14 +324,12 @@
 
     augroup vimrcs
       au!
-      au bufwritepost ~/.vimrc 
+      au bufwritepost ~/.vimrc
         \ source ~/.vimrc |
         \ if exists('g:Powerline_loaded') |
           \ silent! call Pl#Load() |
-        \ endif 
+        \ endif
     augroup END
-
-
 
 " Bundles settings
 
@@ -366,8 +373,6 @@
 
         nnoremap <silent> <leader>nt :NERDTreeToggle<CR>
 
-
-
         let g:NERDTreeWinPos = "right"
         let g:NERDTreeQuitOnOpen = 1
         let g:NERDTreeWinSize = 40
@@ -394,3 +399,7 @@
   " PLUGIN Syntastic
 
         let g:syntastic_javascript_checker = "jshint"
+
+    " PLUGIN fakeclip
+
+        let g:fakeclip_terminal_multiplexer_type = "tmux"
