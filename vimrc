@@ -7,7 +7,6 @@
     call vundle#rc()
 
     " let Vundle manage Vundle
-    " required!
 
     Bundle 'gmarik/vundle'
 
@@ -24,6 +23,9 @@
     " + Markdown syntax
         Bundle 'tpope/vim-markdown'
 
+    " + Textile syntax
+        Bundle 'timcharper/textile.vim'
+
     " + HTML5 omnicomplete and syntax
         Bundle 'othree/html5.vim'
 
@@ -39,6 +41,9 @@
     " + Stylus syntax
         Bundle 'wavded/vim-stylus'
 
+    " + Less syntax
+        Bundle 'groenewege/vim-less'
+
     " + CSS3 syntax extensin for built-in CSS module
         Bundle 'hail2u/vim-css3-syntax'
 
@@ -48,7 +53,7 @@
     " + Git config syntax
         Bundle 'tpope/vim-git'
 
-    " + Tmux vim syntax
+    " + Tmux config vim syntax
         Bundle 'zaiste/tmux.vim'
 
     " + Highlight colors in css files
@@ -77,7 +82,7 @@
         Bundle 'The-NERD-tree'
 
     " + Fuzzy file, buffer, mru, tag, etc finder
-        Bundle 'kien/ctrlp.vim.git'
+        Bundle 'kien/ctrlp.vim'
 
     " + Vim plugin to list, select and switch between buffers
         Bundle 'jeetsukumaran/vim-buffergator'
@@ -122,7 +127,7 @@
     " Interface
 
     " + Maintains a history of previous yanks, changes and deletes
-        Bundle 'YankRing.vim'
+        "Bundle 'YankRing.vim'
 
     " + Zoom in/out  of windows (toggle between one window and multi-window)
         Bundle 'ZoomWin'
@@ -133,6 +138,9 @@
     " + The ultimate vim statusline utility
         Bundle 'Lokaltog/vim-powerline'
 
+    " + Ultimate auto-completion system for Vim
+        Bundle 'Shougo/neocomplcache'
+
     " Other
 
     " + Git wrapper with diff and merge compabilities
@@ -141,17 +149,11 @@
     " + Enable repeating supported plugin maps with '.'
         Bundle 'tpope/vim-repeat'
 
-    " + Personal wiki for Vim
-        Bundle 'vimwiki'
-
     " + Syntax checking hacks for vim
         Bundle 'scrooloose/syntastic'
 
     " + Make Vim play nicely with iTerm 2 and tmux
         Bundle 'sjl/vitality.vim'
-
-    " + Terminal emulator which uses a Vim buffer to display the program output
-        Bundle 'rosenfeld/conque-term'
 
     " + Vim plugin that displays tags in a window, ordered by class etc
         Bundle 'majutsushi/tagbar'
@@ -159,11 +161,18 @@
     " + Bundled vim version of Sparkup
         Bundle 'kogakure/vim-sparkup.git'
 
-    " + Pseudo clipboard register for non-GUI version of Vim
-        Bundle 'fakeclip'
+    " + Effortless vim and tmux interaction
+        Bundle 'vimux'
 
-    " + Tiled Window Management for Vim
-        "Bundle 'spolu/dwm.vim'
+    " + Switch very quickly between your active buffers
+        Bundle 'LustyJuggler'
+
+    " + Show 'Match 123 of 456 /search term/' in Vim searches
+        Bundle 'henrik/vim-indexed-search'
+
+    " + Preview markdown documents in the browser from Vim
+        Bundle 'nelstrom/vim-markdown-preview'
+
 
 " Базовые настройки
 
@@ -216,13 +225,15 @@
 
     set spell spelllang=ru,en       " Проверка орфографии
 
-    "set noshowmatch                 " Не показывать парные <> в HTML
+    set mouse=a
 
     set noswapfile
 
-    set nobackup                    " Выключаем бэкап
+    set clipboard=unnamed
 
-    let loaded_matchparen=1         " Перестает прыгать на парную скобку, показывая где она. +100 к скорости
+    set nobackup                    " выключаем бэкап
+
+    let loaded_matchparen=1         " перестает прыгать на парную скобку, показывая где она. +100 к скорости
 
     filetype plugin indent on
 
@@ -231,7 +242,7 @@
     set undofile
     set undolevels=1001
 
-    " Назначаем символы для табов и переносов в зависимости от наличия юникода
+    " назначаем символы для табов и переносов в зависимости от наличия юникода
 
     if has('multi_byte')
         if version >= 700
@@ -300,7 +311,7 @@
     nnoremap <leader><space> :noh<cr>
 
     " Хоткей для очистки файла
-    nnoremap <leader>s :FixWhitespace<cr>:retab<cr>
+    nnoremap <leader>sd :FixWhitespace<cr>:retab<cr>:CSScomb<cr>
 
 
 
@@ -339,11 +350,11 @@
 
         colorscheme solarized
 
-        if has('gui_running')
-            set background=light
-        else
-            set background=dark
-        endif
+        "if has('gui_running')
+            "set background=light
+        "else
+        set background=dark
+        "endif
 
     " SYNTAX vim-javascript
 
@@ -360,6 +371,11 @@
 
         let g:ctrlp_map = '<leader>p'
         let g:ctrlp_working_path_mode = 0
+        let g:ctrlp_by_filename = 1
+        let g:ctrlp_match_window_reversed = 0
+        let g:ctrlp_working_path_mode = 'ra'
+        let g:ctrlp_use_caching = 0
+        let g:ctrlp_show_hidden = 1
 
     " PLUGIN Buffergator
 
@@ -376,6 +392,7 @@
         let g:NERDTreeWinPos = "right"
         let g:NERDTreeQuitOnOpen = 1
         let g:NERDTreeWinSize = 40
+        let g:NERDTreeShowHidden = 1
 
     " PLUGIN Undolist
 
@@ -387,9 +404,9 @@
 
     " PLUGIN YankRing
 
-        nmap <leader>y :YRShow<CR>
+        "nmap <leader>y :YRShow<CR>
 
-        let g:yankring_min_element_length = 2
+        "let g:yankring_min_element_length = 2
 
   " PLUGIN Fugitive
 
@@ -400,6 +417,8 @@
 
         let g:syntastic_javascript_checker = "jshint"
 
-    " PLUGIN fakeclip
+  " PLUGIN AutoComplPop
 
-        let g:fakeclip_terminal_multiplexer_type = "tmux"
+autocmd FileType styl setlocal let g:acp_behavior-command = "\<C-x>\<C-o>"
+autocmd FileType styl setlocal let g:acp_behavior-meets = 'acp#meetsForCssOmni'
+autocmd FileType styl setlocal let g:acp_behavior-repeat = 0

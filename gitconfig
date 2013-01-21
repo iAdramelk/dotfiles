@@ -5,12 +5,26 @@
 
 [alias]
 
-    st = status
     ci = commit
     co = checkout
     br = branch
     up = pull -u
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+    fl = log -u
+    dl = "!git ll -1"
+    dlc = diff --cached HEAD^
+    f = "!git ls-files | grep -i"
+    grep = grep -Ii
+    la = "!git config -l | grep alias | cut -c 7-"
+    assume = update-index --assume-unchanged
+    unassume = update-index --no-assume-unchanged
+    assumed = "!git ls-files -v | grep ^h | cut -c 3-"
+    unassumeall = "!git assumed | xargs git update-index --no-assume-unchanged"
+    st = status
+    cl = clone
+    diff = diff --word-diff
 
 [branch]
 
@@ -45,7 +59,6 @@
     whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
     quotepath = false
     editor = vim
-    pager = vimpager
 
 [github]
 

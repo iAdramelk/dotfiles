@@ -37,3 +37,5 @@ export PAGER=/usr/local/bin/vimpager
 
 alias less=$PAGER
 alias zless=$PAGER
+
+[[ -f `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
