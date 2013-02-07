@@ -1,0 +1,23 @@
+{
+    "node" : true,
+    "es5" : true
+
+    "boss" : false,
+    "jquery": true,
+    "curly": true,
+    "indent": 4,
+    "loopfunc": true,
+    "eqeqeq": true,
+    "forin": true,
+    "bitwise": true,
+    "immed": true,
+    "latedef": true,
+    "newcap": true,
+    "quotmark": true,
+    "undef": true,
+    "unused": true,
+    "strict": true,
+    "trailing": true,
+
+    "laxcomma": true
+}
