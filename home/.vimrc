@@ -110,7 +110,8 @@
         Bundle 'docunext/closetag.vim'
 
     " + Perform all your vim insert mode completions with Tab
-        Bundle 'AutoComplPop'
+        "Bundle 'AutoComplPop'
+        Bundle 'Valloric/YouCompleteMe'
 
     " + Vim script for text filtering and alignment
         Bundle 'godlygeek/tabular'
@@ -138,7 +139,7 @@
         Bundle 'scrooloose/syntastic'
 
     " + Make Vim play nicely with iTerm 2 and tmux
-        Bundle 'sjl/vitality.vim'
+        "Bundle 'sjl/vitality.vim'
 
     " + Vim plugin that displays tags in a window, ordered by class etc
         Bundle 'majutsushi/tagbar'
@@ -184,7 +185,7 @@
     set scrolloff=3                 " Позиция с которой начинается скролл
     set cursorline                  " Подсветка строки, в которой находится
                                     "  в данный момент курсор
-    "set t_Co=256                    " Кол-во цветов
+    set t_Co=256                    " Кол-во цветов
 
     set splitbelow                  " Новый сплит будет ниже текущего :sp
     set splitright                  " Новый сплит будет правее текущего :vsp
@@ -376,6 +377,5 @@
 
   " PLUGIN Syntastic
 
-        let g:syntastic_check_on_open=1
-        let g:syntastic_javascript_checker = "jshint"
-
+        let g:syntastic_check_on_open = 1
+        let g:syntastic_javascript_checkers = [ "jshint" ]
