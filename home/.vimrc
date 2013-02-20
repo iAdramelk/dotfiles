@@ -268,6 +268,9 @@
     nnoremap k gk
     nnoremap ; :
 
+    map <leader>re :execute "edit " . $MYVIMRC<CR>
+    map <leader>rs :execute "source " . $MYVIMRC<CR>
+
     " Ремапим русские символы
 
     set langmap=ёйцукенгшщзхъфывапролджэячсмитьбюЁЙЦУКЕHГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ;`qwertyuiop[]asdfghjkl\\;'zxcvbnm\\,.~QWERTYUIOP{}ASDFGHJKL:\\"ZXCVBNM<>
