@@ -6,7 +6,7 @@
     set rtp+=~/.vim/bundle/vundle/
     call vundle#rc()
 
-    " let Vundle manage Vundle
+  " let Vundle manage Vundle
 
     Bundle 'gmarik/vundle'
 
@@ -28,6 +28,12 @@
 
     " + HTML5 omnicomplete and syntax
         Bundle 'othree/html5.vim'
+
+    " + Vim syntax highlighting for Jade templates
+        Bundle 'digitaltoad/vim-jade'
+
+    " + Twig syntax highlighting, snipMate, etc.
+        Bundle "evidens/vim-twig"
 
     " + JavaScript syntax
         Bundle 'pangloss/vim-javascript'
@@ -84,6 +90,12 @@
     " + Vim plugin to list, select and switch between buffers
         Bundle 'jeetsukumaran/vim-buffergator'
 
+    " + Switch very quickly between your active buffers
+        Bundle 'LustyJuggler'
+
+    " + Delete all the buffers except the current/named buffer
+        Bundle 'BufOnly.vim'
+
     " File editing and file navigation
 
     " + Pairs of handy bracket mappings
@@ -106,18 +118,21 @@
     " + Quoting/parenthesizing made simple
         Bundle 'tpope/vim-surround'
 
-    " + Functions and mappings to close open HTML/XML tags
-        Bundle 'docunext/closetag.vim'
-
     " + Perform all your vim insert mode completions with Tab
-        "Bundle 'AutoComplPop'
-        Bundle 'Valloric/YouCompleteMe'
+        Bundle 'AutoComplPop'
+        "Bundle 'Valloric/YouCompleteMe'
 
     " + Vim script for text filtering and alignment
         Bundle 'godlygeek/tabular'
 
     " + Commenting plugin
         Bundle 'scrooloose/nerdcommenter'
+
+    " + Plugin for editorconfig
+        Bundle 'editorconfig/editorconfig-vim'
+
+    " + Tern plugin for Vim
+        Bundle 'marijnh/tern_for_vim'
 
     " Interface
 
@@ -138,23 +153,20 @@
     " + Syntax checking hacks for vim
         Bundle 'scrooloose/syntastic'
 
-    " + Make Vim play nicely with iTerm 2 and tmux
-        "Bundle 'sjl/vitality.vim'
-
     " + Vim plugin that displays tags in a window, ordered by class etc
         Bundle 'majutsushi/tagbar'
 
     " + Bundled vim version of Sparkup
         Bundle 'kogakure/vim-sparkup.git'
 
-    " + Switch very quickly between your active buffers
-        Bundle 'LustyJuggler'
-
     " + Show 'Match 123 of 456 /search term/' in Vim searches
         Bundle 'henrik/vim-indexed-search'
 
     " + Preview markdown documents in the browser from Vim
         Bundle 'nelstrom/vim-markdown-preview'
+
+    " + A start screen for Vim
+        Bundle 'mhinz/vim-startify'
 
 
 " Базовые настройки
@@ -213,9 +225,13 @@
 
     set clipboard=unnamed
 
-    set nobackup                    " выключаем бэкап
+    set nobackup                    " Выключаем бэкап
 
-    let loaded_matchparen=1         " перестает прыгать на парную скобку, показывая где она. +100 к скорости
+    set autoread
+
+    set ttymouse=xterm2
+
+    let loaded_matchparen=1         " Перестает прыгать на парную скобку, показывая где она. +100 к скорости
 
     filetype plugin indent on
 
@@ -224,7 +240,7 @@
     set undofile
     set undolevels=1001
 
-    " назначаем символы для табов и переносов в зависимости от наличия юникода
+    " Назначаем символы для табов и переносов в зависимости от наличия юникода
 
     if has('multi_byte')
         if version >= 700
@@ -268,8 +284,8 @@
     nnoremap k gk
     nnoremap ; :
 
-    map <leader>re :execute "edit " . $MYVIMRC<CR>
-    map <leader>rs :execute "source " . $MYVIMRC<CR>
+    map <leader>re :execute "edit ~/.vimrc"<CR>
+    map <leader>rs :execute "source ~/.vimrc"<CR>
 
     " Ремапим русские символы
 
@@ -302,7 +318,7 @@
 
 " Automatization
 
-    " Fix for closing window the the last buffer is Quicklist
+    " Fix for closing window then the last buffer is Quicklist
 
         autocmd BufEnter * call MyLastWindow()
 
@@ -355,6 +371,7 @@
         let g:ctrlp_working_path_mode = 'ra'
         let g:ctrlp_use_caching = 0
         let g:ctrlp_show_hidden = 1
+        let g:ctrlp_custom_ignore = '\v[\/](node_modules|.git)$'
 
     " PLUGIN Buffergator
 
@@ -382,3 +399,8 @@
 
         let g:syntastic_check_on_open = 1
         let g:syntastic_javascript_checkers = [ "jshint" ]
+        let g:syntastic_csslint_options = "--ignore=adjoining-classes,box-sizing,box-model,duplicate-background-images,empty-rules,qualified-headings"
+
+  " PLUGIN BufOnly
+
+        nmap <leader>B :BufOnly<CR>
