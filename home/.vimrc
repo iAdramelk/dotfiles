@@ -1,4 +1,3 @@
-" Vundle setup
 
     set nocompatible               " be iMproved
     filetype off                   " required!
@@ -65,6 +64,7 @@
     " + Highlight colors in css files
         Bundle 'ap/vim-css-color'
 
+" Vundle setup
     " Validation and file cleanup
 
     " + Script to remove trailing whitespaces
@@ -347,9 +347,9 @@
 
     " THEME Solarized
 
-        syntax enable
-        colorscheme solarized
-        set background=dark
+syntax enable
+set background=dark
+colorscheme solarized
 
     " SYNTAX vim-javascript
 
