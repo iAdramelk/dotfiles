@@ -1,23 +1,32 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
-    set nocompatible               " be iMproved
-    filetype off                   " required!
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
 
-    set rtp+=~/.vim/bundle/vundle/
-    call vundle#rc()
-
-  " let Vundle manage Vundle
-
-    Bundle 'gmarik/vundle'
-
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
 
 " My Bundles here:
 
     " Themes
 
     " + Solarized vim theme
-        Bundle 'altercation/vim-colors-solarized'
+        "Bundle 'altercation/vim-colors-solarized'
+
+    " Monokai vim theme
+        Bundle 'tomasr/molokai'
 
     " Syntax highlighting and indent
+
+    " + Slim
+        Bundle "slim-template/vim-slim"
+
+    " + Mustache and handlebars mode for vim
+        Bundle 'mustache/vim-mustache-handlebars'
 
     " + Markdown syntax
         Bundle 'tpope/vim-markdown'
@@ -64,7 +73,6 @@
     " + Highlight colors in css files
         Bundle 'ap/vim-css-color'
 
-" Vundle setup
     " Validation and file cleanup
 
     " + Script to remove trailing whitespaces
@@ -102,16 +110,13 @@
         Bundle 'tpope/vim-unimpaired'
 
     " + Extended % matching for HTML, LaTeX, and many other languages
-        Bundle 'tsaleh/vim-matchit'
+        Bundle 'matchit.zip'
 
     " + Easily search for, substitute, and abbreviate multiple variants of a word
         Bundle 'tpope/vim-abolish'
 
     " + Vim motions on speed!
         Bundle 'Lokaltog/vim-easymotion'
-
-    " + Plugin for better line numbers
-        Bundle 'myusuf3/numbers.vim'
 
     " Autocomplete, snippets and batch editing
 
@@ -132,7 +137,7 @@
         Bundle 'editorconfig/editorconfig-vim'
 
     " + Tern plugin for Vim
-        Bundle 'marijnh/tern_for_vim'
+        "Bundle 'marijnh/tern_for_vim'
 
     " Interface
 
@@ -156,9 +161,6 @@
     " + Vim plugin that displays tags in a window, ordered by class etc
         Bundle 'majutsushi/tagbar'
 
-    " + Bundled vim version of Sparkup
-        Bundle 'kogakure/vim-sparkup.git'
-
     " + Show 'Match 123 of 456 /search term/' in Vim searches
         Bundle 'henrik/vim-indexed-search'
 
@@ -167,6 +169,19 @@
 
     " + A start screen for Vim
         Bundle 'mhinz/vim-startify'
+
+    " + Dash search
+        Bundle 'rizzatti/funcoo.vim'
+        Bundle 'rizzatti/dash.vim'
+
+    " + TaskPaper plugin
+        Bundle 'davidoc/taskpaper.vim'
+
+    " + Gundo
+        Bundle 'Gundo'
+
+call vundle#end()            " required
+filetype plugin indent on    " required
 
 
 " Базовые настройки
@@ -197,13 +212,14 @@
     set scrolloff=3                 " Позиция с которой начинается скролл
     set cursorline                  " Подсветка строки, в которой находится
                                     "  в данный момент курсор
-    set t_Co=256                    " Кол-во цветов
+    "set t_Co=256                    " Кол-во цветов
 
     set splitbelow                  " Новый сплит будет ниже текущего :sp
     set splitright                  " Новый сплит будет правее текущего :vsp
     set shortmess+=IT                " Не показывать intro screen
 
     set hidden                      " Разрешает скрытые буфферы
+    set number                      " Абсолютный номер для текущей строки
     set relativenumber              " Относительные номера строк
 
     set visualbell                  " Вместо бибиканья моргать экраном
@@ -345,11 +361,13 @@
 
 " Bundles settings
 
-    " THEME Solarized
+    " THEME
 
-syntax enable
-set background=dark
-colorscheme solarized
+        syntax enable
+        "set background=dark
+        colorscheme molokai
+
+        let g:molokai_original = 1
 
     " SYNTAX vim-javascript
 
@@ -376,6 +394,7 @@ colorscheme solarized
     " PLUGIN Buffergator
 
         let g:buffergator_viewport_split_policy = "R"
+        let g:buffergator_sort_regime = "mru"
 
     " PLUGIN ZoomWin
 
@@ -399,8 +418,13 @@ colorscheme solarized
 
         let g:syntastic_check_on_open = 1
         let g:syntastic_javascript_checkers = [ "jshint" ]
-        let g:syntastic_csslint_options = "--ignore=adjoining-classes,box-sizing,box-model,duplicate-background-images,empty-rules,qualified-headings"
+        "let g:syntastic_csslint_options = "--ignore=adjoining-classes,box-sizing,box-model,duplicate-background-images,empty-rules,qualified-headings"
 
-  " PLUGIN BufOnly
 
-        nmap <leader>B :BufOnly<CR>
+    " PLUGIN Mustache
+
+        au BufRead,BufNewFile *.hbs set filetype=Mustache
+
+    " PLUGIN Dash
+
+        :nmap <silent> <leader>d <Plug>DashSearch

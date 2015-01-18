@@ -44,4 +44,4 @@ alias vimrc='vim ~/.vimrc'
 
 bl() { mkdir "$*"; touch "$*/$*.styl" }
 
-. ~/.nvm/nvm.sh
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
